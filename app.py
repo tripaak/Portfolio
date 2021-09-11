@@ -1,12 +1,12 @@
 from flask import Flask, render_template
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', template_folder='templates')
 
 
-@app.route('/')
+@app.route('/index.html')
 def index():
-    return render_template("index.html")
+    return render_template("index.html"), 200
 
 
 @app.route('/about.html')
@@ -24,4 +24,4 @@ def contact():
     return render_template("contact.html")
 
 
-app.run()
+app.run(debug=False, host='0.0.0.0')
